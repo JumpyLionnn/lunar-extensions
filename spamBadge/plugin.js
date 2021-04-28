@@ -5,7 +5,7 @@ socket.on("message", (user, message) => {
         return;
     }
     let lastMessage = messages.children[messages.children.length - 2];
-    if (lastMessage.innerText = `${user}: ${message}`) {
+    if (lastMessage.innerText === `${user}: ${message}`) {
         messages.remove(messages.children[messages.children.length - 1]);
 
         if (lastMessage.children.length === 2 && lastMessage.children[1].classList.value === "badge bg-secondary") {
