@@ -1,3 +1,4 @@
+console.log("started")
 socket.on("message", (user, message) => {
     console.log(message);
     if (messages.length === 1) {
