@@ -1,6 +1,4 @@
-console.log("started")
 socket.on("message", (user, message) => {
-    console.log(message);
     if (messages.length === 1) {
         return;
     }
@@ -11,11 +9,10 @@ socket.on("message", (user, message) => {
         if (lastMessage.children.length === 2 && lastMessage.children[1].classList.value === "badge bg-secondary") {
             lastMessage.children[1].innerText = parseInt(lastMessage.children[1].innerText) + 1;
         } else {
-            console.log("new badge")
             let badge = document.createElement("span");
             badge.classList.value = "badge bg-secondary";
             badge.innerText = "2";
-            lastMessage.appendChild(badge);
+            lastMessage.prepend(badge);
         }
     }
 });
