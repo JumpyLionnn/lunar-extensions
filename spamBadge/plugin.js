@@ -5,13 +5,10 @@ socket.on("message", (user, message) => {
         return;
     }
     let lastMessage = messages.children[messages.children.length - 2];
-    console.log(lastMessage.innerText === `${user}: ${message}`);
 
     if (lastMessage.innerText.startsWith(user) && lastMessage.id === `-${message}-`) {
         messages.removeChild(messages.children[messages.children.length - 1]);
-        console.log(lastMessage.children)
         if (lastMessage.children.length === 2 && lastMessage.children[1].classList.value === "badge bg-secondary") {
-            console / log("new number: " + parseInt(lastMessage.children[1].innerText) + 1)
             lastMessage.children[1].innerText = parseInt(lastMessage.children[1].innerText) + 1;
         } else {
             console.log("new badge")
@@ -20,9 +17,5 @@ socket.on("message", (user, message) => {
             badge.innerText = "2";
             lastMessage.appendChild(badge);
         }
-    } else {
-        console.log("not equal")
-        console.log(lastMessage.innerText);
-        console.log(`${user}: ${message}`);
     }
 });
