@@ -8,8 +8,8 @@ socket.on("message", (user, message) => {
     console.log(lastMessage.innerText === `${user}: ${message}`);
 
     if (lastMessage.innerText.startsWith(user) && lastMessage.id === `-${message}-`) {
-        messages.remove(messages.children[messages.children.length - 1]);
-
+        messages.removeChild(messages.children[messages.children.length - 1]);
+        console.log(lastMessage.children)
         if (lastMessage.children.length === 2 && lastMessage.children[1].classList.value === "badge bg-secondary") {
             console / log("new number: " + parseInt(lastMessage.children[1].innerText) + 1)
             lastMessage.children[1].innerText = parseInt(lastMessage.children[1].innerText) + 1;
