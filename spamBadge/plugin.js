@@ -4,7 +4,8 @@ socket.on("message", (user, message) => {
     }
     let lastMessage = messages.children[messages.children.length - 2];
 
-    if (lastMessage.innerText.startsWith(lastMessage.children[0].innerText + user) && lastMessage.id === `-${message}-`) {
+    if (((lastMessage.children[0].classList.value === "badge bg-secondary" && lastMessage.innerText.startsWith(lastMessage.children[0].innerText + user)) ||
+            (lastMessage.innerText.startsWith(user))) && lastMessage.id === `-${message}-`) {
         messages.removeChild(messages.children[messages.children.length - 1]);
         console.log(lastMessage.children[0].classList);
         console.log(lastMessage.children.length);
