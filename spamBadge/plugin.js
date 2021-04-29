@@ -14,7 +14,7 @@ socket.on("message", (user, message) => {
         } else {
             let badge = document.createElement("span");
             badge.classList.value = badgeClassNames;
-            badge.style.marginRight = ".1em";
+            badge.style.marginRight = ".2em";
             badge.innerText = "2";
             lastMessage.prepend(badge);
         }
