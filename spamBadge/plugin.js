@@ -6,8 +6,7 @@ socket.on("message", (user, message) => {
     }
     let lastMessage = messages.children[messages.children.length - 2];
     let lastText = lastMessage.id;
-    let lastMessageBadge = lastMessage.getElementById("spamBadge");
-    //lastMessage.getElementById("messageContent")
+    let lastMessageBadge = lastMessage.querySelector("#spamBadge");
     if (lastText === `-${message}-`) {
         messages.removeChild(messages.children[messages.children.length - 1]);
         if (lastMessageBadge !== null) {
