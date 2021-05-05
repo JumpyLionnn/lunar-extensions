@@ -5,10 +5,10 @@ socket.on("message", (user, message) => {
         return;
     }
     let lastMessage = messages.children[messages.children.length - 2];
-    let lastText = lastMessage.id.substring(1, lastMessage.id.length - 2);
+    let lastText = lastMessage.id;
     let lastMessageBadge = lastMessage.getElementById("spamBadge");
     //lastMessage.getElementById("messageContent")
-    if (lastText === message) {
+    if (lastText === `-${message}-`) {
         messages.removeChild(messages.children[messages.children.length - 1]);
         if (lastMessageBadge !== null) {
             lastMessageBadge.innerText = parseInt(lastMessageBadge.innerText) + 1;
