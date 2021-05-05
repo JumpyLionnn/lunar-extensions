@@ -5,15 +5,17 @@ socket.on("message", (user, message) => {
         return;
     }
     let lastMessage = messages.children[messages.children.length - 2];
-
-    if (((lastMessage.children[0].classList.value === badgeClassNames && lastMessage.innerText.startsWith(lastMessage.children[0].innerText + user)) ||
-            (lastMessage.innerText.startsWith(user))) && lastMessage.id === `-${message}-`) {
+    let lastText = lastMessage.id.substring(1, lastMessage.id.length - 2);
+    let lastMessageBadge = lastMessage.getElementById("spamBadge");
+    //lastMessage.getElementById("messageContent")
+    if (lastText === message) {
         messages.removeChild(messages.children[messages.children.length - 1]);
-        if (lastMessage.children.length === 2 && lastMessage.children[0].classList.value === badgeClassNames) {
-            lastMessage.children[0].innerText = parseInt(lastMessage.children[0].innerText) + 1;
+        if (lastMessageBadge !== null) {
+            lastMessageBadge.innerText = parseInt(lastMessageBadge.innerText) + 1;
         } else {
             let badge = document.createElement("span");
             badge.classList.value = badgeClassNames;
+            badge.id = "spamBadge";
             badge.style.marginRight = ".2em";
             badge.innerText = "2";
             lastMessage.prepend(badge);
